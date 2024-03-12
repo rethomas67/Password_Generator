@@ -10,6 +10,26 @@ function createRandom(passwordStrings) {
 }
 
 function generatePassword() {
+  var userLength = prompt("What length do you want for the password?");
+  var passwordLength = 0;
+
+  if (!userLength) {
+    return "";
+  }
+
+  if (!Number(userLength)) {
+    alert("Please enter a length between 8 and 128");
+    return "";
+  }
+
+  passwordLength = Number(userLength);
+  if (passwordLength < 8 || passwordLength > 128) {
+    alert("Please enter a length between 8 and 128");
+    return "";
+  }
+
+  console.log(passwordLength);
+  return "";
   //create the password character sets
   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
@@ -35,7 +55,6 @@ function generatePassword() {
   var password = arrayCharacters.map(createRandom).join("");
   console.log(password);
   //convert the array to a string
-  var passwordLength = 50;
   const passwordResult = arrayCharacters.join("");
   console.log(passwordResult);
   for (var i = password.length; i < passwordLength; i++) {
