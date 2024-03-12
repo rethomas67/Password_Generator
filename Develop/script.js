@@ -1,6 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+function createRandom(arrayCharacters) {
+  return arrayCharacters.charAt(
+    Math.floor(Math.random() * arrayCharacters.length)
+  );
+}
+
 function generatePassword() {
   //create the password character sets
   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -17,12 +23,20 @@ function generatePassword() {
   var arrayCharacters = [];
   arrayCharacters = arrayCharacters.concat(upperCase);
   arrayCharacters = arrayCharacters.concat(lowerCase);
+  arrayCharacters = arrayCharacters.concat(numeric);
+  arrayCharacters = arrayCharacters.concat(specialCharacters);
+
+  //map joins each array set, createRandom will create a string within each character set, and join will perform the operation to  convert the result to a string
+  var password = arrayCharacters.map(createRandom).join("");
 
   console.log(arrayUpperCase);
   console.log(arraylowerCase);
   console.log(arrayNumeric);
   console.log(arraySpecialCharacters);
   console.log(arrayCharacters);
+
+  console.log(password);
+  return password;
 }
 
 // Write password to the #password input
