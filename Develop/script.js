@@ -10,26 +10,6 @@ function createRandom(passwordStrings) {
 }
 
 function generatePassword() {
-  var userLength = prompt("What length do you want for the password?");
-  var passwordLength = 0;
-
-  if (!userLength) {
-    return "";
-  }
-
-  if (!Number(userLength)) {
-    alert("Please enter a length between 8 and 128");
-    return "";
-  }
-
-  passwordLength = Number(userLength);
-  if (passwordLength < 8 || passwordLength > 128) {
-    alert("Please enter a length between 8 and 128");
-    return "";
-  }
-
-  console.log(passwordLength);
-  return "";
   //create the password character sets
   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
@@ -42,11 +22,58 @@ function generatePassword() {
   var arrayNumeric = numeric.split("");
   var arraySpecialCharacters = specialCharacters.split("");
 
+  //retrieve the password length input
+  var userLength = prompt("What length do you want for the password?");
+  var passwordLength = 0;
+
+  //check if cancel was pressed
+  if (!userLength) {
+    return "";
+  }
+
+  //check if the input is a number
+  if (!Number(userLength)) {
+    alert("Please enter a length between 8 and 128!");
+    return "";
+  }
+
+  //check if the password length is in the correct range
+  passwordLength = Number(userLength);
+  if (passwordLength < 8 || passwordLength > 128) {
+    alert("Please enter a length between 8 and 128!");
+    return "";
+  }
+
+  //retrieve the character sets the users wants in the password
+  var bUpperCase = confirm("Do you want uppercase letters?");
+  var bLowerCase = confirm("Do you want lowercase letters?");
+  var bNumeric = confirm("Do you want numeric characters?");
+  var bSpecialCharacters = confirm("Do you want special characters?");
+
+  //check if the user selected any character sets
+  if (!bUpperCase && !bLowerCase && !bNumeric && !bSpecialCharacters) {
+    alert("Please select a character set!");
+    return "";
+  }
+
+  //add the array sets the user selected
   var arrayCharacters = [];
-  arrayCharacters = arrayCharacters.concat(upperCase);
-  arrayCharacters = arrayCharacters.concat(lowerCase);
-  arrayCharacters = arrayCharacters.concat(numeric);
-  arrayCharacters = arrayCharacters.concat(specialCharacters);
+
+  if (bUpperCase) {
+    arrayCharacters = arrayCharacters.concat(upperCase);
+  }
+
+  if (bLowerCase) {
+    arrayCharacters = arrayCharacters.concat(lowerCase);
+  }
+
+  if (bNumeric) {
+    arrayCharacters = arrayCharacters.concat(numeric);
+  }
+
+  if (bSpecialCharacters) {
+    arrayCharacters = arrayCharacters.concat(specialCharacters);
+  }
 
   /*map joins each array set, createRandom will create a string within each character set,
    and join will perform the operation to  convert the result to a string
