@@ -1,9 +1,11 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function createRandom(arrayCharacters) {
-  return arrayCharacters.charAt(
-    Math.floor(Math.random() * arrayCharacters.length)
+function createRandom(passwordStrings) {
+  /*random returns a random value between 0 and 1 multiply by string length 
+  and use floor to round down to the nearest integer*/
+  return passwordStrings.charAt(
+    Math.floor(Math.random() * passwordStrings.length)
   );
 }
 
@@ -26,14 +28,19 @@ function generatePassword() {
   arrayCharacters = arrayCharacters.concat(numeric);
   arrayCharacters = arrayCharacters.concat(specialCharacters);
 
-  //map joins each array set, createRandom will create a string within each character set, and join will perform the operation to  convert the result to a string
+  /*map joins each array set, createRandom will create a string within each character set,
+   and join will perform the operation to  convert the result to a string
+   The result will be a random character for each character set chosen by the user
+   */
   var password = arrayCharacters.map(createRandom).join("");
-
-  console.log(arrayUpperCase);
-  console.log(arraylowerCase);
-  console.log(arrayNumeric);
-  console.log(arraySpecialCharacters);
-  console.log(arrayCharacters);
+  console.log(password);
+  //convert the array to a string
+  var passwordLength = 50;
+  const passwordResult = arrayCharacters.join("");
+  console.log(passwordResult);
+  for (var i = password.length; i < passwordLength; i++) {
+    password += createRandom(passwordResult);
+  }
 
   console.log(password);
   return password;
