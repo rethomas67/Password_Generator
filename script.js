@@ -80,15 +80,12 @@ function generatePassword() {
    The result will be a random character for each character set chosen by the user
    */
   var password = arrayCharacters.map(createRandom).join("");
-  console.log(password);
   //convert the array to a string
   const passwordResult = arrayCharacters.join("");
-  console.log(passwordResult);
   for (var i = password.length; i < passwordLength; i++) {
     password += createRandom(passwordResult);
   }
 
-  console.log(password);
   return password;
 }
 
