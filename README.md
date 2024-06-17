@@ -36,6 +36,9 @@ After the prompts are answered, a password is created based on the user's select
 
 ![alt text](image-5.png)
 
+GitHub Repository: https://github.com/rethomas67/Password_Generator/
+GitHub page link: https://rethomas67.github.io/Password_Generator/
+
 ## Credits
 
 N/A
